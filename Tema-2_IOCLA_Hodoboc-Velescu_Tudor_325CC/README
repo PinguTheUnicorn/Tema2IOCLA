@@ -1,0 +1,69 @@
+Tema-2 IOCLA Strings
+Hodoboc-Velescu Tudor 325CC
+
+Details about the implementation
+
+1. One Time Pad
+The function implements the otp algorithm. It goes through the plaintext,
+starting from the end. It takes each character and applies the XOR operation
+with the correspunding element from the key and stores it in the ciphertext.
+
+2. Caesar Cipher
+The function implements the caesar cipher algorithm. It starts from the end of
+the plaintext, checking if the current character is a letter. If it's not, the
+encryption won't happen. For letters, the encryption consists in the circular
+rotation of the letter to the right. This is done by adding the index of the
+charcter in the alphabet to the key and dividing the result to 26, the number
+of the letters in alphabet. The remainer will represent the index of the
+character relative to the beginning of the alphabet. By adding it to the ASCII
+value of 'A' or 'a'(depending if the unencrypted element was an uppercase or
+lowercase) we get the encription of the element. The encripted character is
+placed in the ciphertext at its corresponding position and the process is
+repeated if there are any more characters.
+
+3. Vigenere Cipher
+The function implements the vigenere cipher. It has 2 contors, one for the
+plaintext and one for the key. It checks every character. If it's not a letter,
+the encryption won't happen and it'll continue to the next element. Else, the
+index of the key is increased(if it exceeds the key length, it will be returned
+to the beginning) and the corresponding element in the key is used for the
+process of circular rotation. The rotation is the same as the one from Caesar
+Cipher. This process is repeated untill there are no more unencrypted characters
+in plaintext.
+
+4. StrStr
+This program implements the strstr function which finds the index of the first
+occurrence of a string s2(the needle) in the string s1(the haystack) or the
+length of the haystack +1 if the string wasn't found. It starts searching from
+the beginning of the haystack. If the current character matches the first
+element of the needle, it starts checking if the rest of characters matches the
+corresponding element in the needle. This check starts from the last character
+that should match because it is more likely that the characters won't match and
+I considered this to be more efficient. If the needle completely matches, the
+index at which it was found will be returned. Otherwise, the process will be
+repeated until the last index at which the needle can be found has been passed.
+In that case, the function returns haystack length +1.
+
+5. Binary to Hexadecimal
+This function transforms the binary representation of a number into its
+hexadecimal one. It starts by calculating the number of elements the hexa
+representation will have. The length of the binary sequence is divided by 4
+because one hexa character repesents 4 binary characters. The quotient will
+represent the length of the hexa value. If the remainer is not 0, this length
+will increase by 1. The newline character will be added at the end of the
+string. After this, the binary sequence will be traversed from end to start. If
+the character is 1, it's representative value will be added to a variable
+(explicitly called value). The value of the bit will be created by shifting 1
+to the left by n positions. After a 4-bit sequence has passed, the n will be
+reversed to 0, and the total value will be converted to the representing hexa
+character and will be added to the curernt position in the hexa_value string.
+This process is repeated until there are no more 4-bit sequences. If there are
+any more characters that haven't form a sequence, the last value will be
+computed and added to the string.
+
+Other details
+Total time required for the implementation: around 12-13 hours
+Difficulty: medium
+
+Other comments
+Please, stop putting us converting numbers to hexa, it's horrible :(
